@@ -1,15 +1,104 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
- * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+@charset "utf-8";
+
+/* item */
+.recipe .panel-body {
+  height: 70px;
+}
+.recipe .panel-heading {
+  height: 250px;
+}
+.recipe .panel-heading img {
+  height: 100%;
+  max-width: 100%;
+}
+
+.recipe-title {
+  /* 文の行数を2行に保ち、最後に ... を追加するスタイル */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 1;
+  overflow: hidden;
+}
+
+
+.navbar-brand .img-rounded {
+  width:200px; 
+  height:60px; 
+  margin-top: -20px;
+}
+
+.cover .cover-inner {
+  height: 100%;
+  margin: auto;
+  display: table;
+}
+.cover .cover-inner .cover-contents {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  position: relative;
+}
+ 
+.thumbnail { 
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.thumbnail img { 
+  border-radius: 50%;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+
+.minithumbnail { 
+  float: left;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.minithumbnail img { 
+  float: left;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  overflow: hidden;
+}
+
+.costtable {
+  padding: 10px;
+  margin: 10px;
+}
+
+.costdisplay  {
+  margin: auto;
+  text-align: center;
+}
+
+.allcost  {
+  margin: auto;
+  text-align: center;
+}
+
+.costtitle  {
+  margin: auto;
+  text-align: center;
+}
+
+.costnum {
+  color: darkorange;
+}
+
+.recipetype {
+  margin: auto;
+  text-align: center;
+}
+
+.bootstrap-date {
+  display: inline-block;
+  width: auto;
+}
