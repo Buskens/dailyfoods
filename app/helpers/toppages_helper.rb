@@ -87,12 +87,12 @@ module ToppagesHelper
   end
   
   def menuExist?(date, type, food_type)
-    result = current_user.user_menus.where(date: date).where(type: type).where(food_type: food_type)
+    result = current_user.usermenus.where(date: date).where(type: type).where(food_type: food_type)
     result.empty?
   end
   
   def miniThumbNail(date, type, food_type)
-    result = current_user.user_menus.where(date: date).where(type: type).where(food_type: food_type)
+    result = current_user.usermenus.where(date: date).where(type: type).where(food_type: food_type)
     id = result.first.recipe_id
     image_url = Recipe.find_by(id: id).image_url
     url = Recipe.find_by(id: id).url
