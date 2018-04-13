@@ -1,0 +1,24 @@
+<% if recipes %>
+  <div class="row">
+    <% recipes.each do |recipe| %>
+      <div class="item">
+        <div class="col-md-3 col-sm-4 col-xs-12">
+          <div class="panel panel-default">
+            <div class="panel-heading text-center">
+              <%= link_to(image_tag("#{recipe.image_url}"), recipe.url) %>
+            </div>
+            <div class="panel-body">
+              <p class="recipe-title"><%= recipe.name %></p>
+              <div class="buttons text-center">
+                <%= render 'user_menus/cook_button', recipe: recipe %>
+              </div>
+              <div class="buttons text-center">
+                <%= render 'user_menus/cooked_button', recipe: recipe %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% end %>
