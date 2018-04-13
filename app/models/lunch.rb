@@ -1,0 +1,2 @@
+class Lunch < Usermenu
+end

@@ -1,0 +1,2 @@
+class Dinner < Usermenu
+end
