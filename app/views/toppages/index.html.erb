@@ -54,7 +54,7 @@
                <% else %>
                  <% url, image_url = miniThumbNail(datedeterm(params[:cooked_day]), "morning", "syusai")%>
                  <%= link_to(image_tag(image_url), url) %>
-               <% end %>
+               <% end %> 
            </div>
            <div class="minithumbnail">
                <% if menuExist?(datedeterm(params[:cooked_day]), params[:type], "fukusai") %>
@@ -86,7 +86,7 @@
                <% else %>
                  <% url, image_url = miniThumbNail(datedeterm(params[:cooked_day]), "lunch", "syusai")%>
                  <%= link_to(image_tag(image_url), url) %>
-               <% end %>
+               <% end %> 
            </div>
            <div class="minithumbnail">
                <% if menuExist?(datedeterm(params[:cooked_day]), "lunch", "fukusai") %>
@@ -94,7 +94,7 @@
                <% else %>
                  <% url, image_url = miniThumbNail(datedeterm(params[:cooked_day]), "lunch", "fukusai")%>
                  <%= link_to(image_tag(image_url), url) %>
-               <% end %>
+               <% end %> 
             </div>
             <div class="minithumbnail">
                <% if menuExist?(datedeterm(params[:cooked_day]), "lunch", "syusyoku") %>
@@ -102,7 +102,7 @@
                <% else %>
                  <% url, image_url = miniThumbNail(datedeterm(params[:cooked_day]), "lunch", "syusyoku")%>
                  <%= link_to(image_tag(image_url), url) %>
-               <% end %>
+               <% end %> 
             </div>
            </div>
            <div class="costtable">
