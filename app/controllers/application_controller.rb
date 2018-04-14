@@ -29,7 +29,7 @@ class ApplicationController < ActionController::Base
   end
 
   def doneUpdate
-    recipes = UserMenu.where("type != 'Done'")
+    recipes = Usermenu.where("type != 'Done'")
     recipes.each do |recipe|
       if recipe.cooked_day < Date.today
         recipe.type = 'Done'

@@ -7,8 +7,6 @@ class UsermenusController < ApplicationController
       @recipe.cost = setCost(params[:cost])
       @recipe.code = params[:code]
       @recipe.name = params[:name]
-      @recipe.cooked_day = params[:cooked_day]
-      @recipe.food_type = params[:food_type]
       @recipe.url = params[:url]
       @recipe.image_url = params[:imageUrl]
       

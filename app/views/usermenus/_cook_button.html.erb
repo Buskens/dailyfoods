@@ -1,0 +1,32 @@
+<% record_recipe = Recipe.find_by(code: recipe.code)%>
+<% recipe = record_recipe if record_recipe.present? %>
+<!-- <%= recipe.id %> -->
+<!-- <%= params[:type] %> -->
+<% unless current_user.cook?(params[:cooked_day], params[:type], params[:food_type]) %> 
+<%# if current_user.menuExist?(datedeterm(params[:cooked_day]), params[:type], params[:food_type]) %>
+  <% if current_user.menuExist(params[:cooked_day], params[:type], params[:food_type]) == recipe.code%>
+    <%= form_tag(usermenu_path(recipe.id), method: :delete) do %>
+      <%= hidden_field_tag :recipe_id, recipe.id %>
+      <%= hidden_field_tag :type, params[:type] %>
+      <%= submit_tag 'メニューから外す', class: 'btn btn-success' %>
+    <% end %>
+  <% else %>
+    <button type="button" class="btn btn-default" disabled="disabled">メニューから外す</button>
+  <% end %>
+<% else %>
+  <%# <% if current_user.menuExist?(datedeterm(params[:cooked_day]), params[:type], params[:food_type]) %> 
+  <%= form_tag(usermenus_path) do %>
+    <%= hidden_field_tag :recipe_code, recipe.code %>
+    <%= hidden_field_tag :type, params[:type] %>
+    <%= hidden_field_tag :cooked_day, params[:cooked_day] %>
+    <%= hidden_field_tag :date, datedeterm(params[:cooked_day]) %>
+    <%= hidden_field_tag :food_type, params[:food_type] %>
+    <%= hidden_field_tag :code, recipe.code %>
+    <%= hidden_field_tag :name, recipe.name %>
+    <%= hidden_field_tag :cost, recipe.cost %>
+    <%= hidden_field_tag :url, recipe.url %>
+    <%= hidden_field_tag :imageUrl, recipe.image_url %>
+    <%= submit_tag 'メニューに追加する', class: 'btn btn-primary' %>
+  <% end %>
+  <%# <% end %> 
+<% end %>

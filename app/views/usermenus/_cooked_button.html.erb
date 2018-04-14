@@ -1,0 +1,15 @@
+<% record_recipe = Recipe.find_by(code: recipe.code)%>
+<% recipe = record_recipe if record_recipe.present? %>
+<% unless current_user.cook?(params[:cooked_day], params[:type], params[:food_type]) %>
+  <% if current_user.menuExist(params[:cooked_day], params[:type], params[:food_type]) == recipe.code %>
+    <%= form_tag(usermenu_path(recipe.id), method: :patch) do %>
+      <%= hidden_field_tag :recipe_id, recipe.id %>
+      <%= hidden_field_tag :cooked_day, params[:cooked_day] %>
+      <%= hidden_field_tag :type, params[:type] %>
+      <%= hidden_field_tag :cooked, 'yes' %>
+      <%= submit_tag '作った！', class: 'btn btn-danger' %>
+    <% end %>
+  <% else %>
+     <button type="button" class="btn btn-default" disabled="disabled">作った！</button>
+  <% end %>
+<% end %>
