@@ -1,2 +1,53 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+
+<h1 class="costtitle">出費の集計</h1>
+
+<div class="allcost">
+<h3>これまでの合計金額</h3>
+<h3 class="costnum"><%= allCost() %>円</3>
+<br>
+</div>
+
+<br>
+
+<%= form_tag :user, method: :get do %>
+  <div class="costdisplay">
+  
+  <%= date_select :search_date, :datecost, use_month_numbers: true, include_blank: true %>
+  <%= "の食費" %><br>
+  <% if @datecost.nil? %>
+    <h3>0年0月0日の食費</h3>
+    <h3 class="costnum"><%= "0円" %></h3><br>
+  <% else %>
+    <h3><%= "#{@date.year}年#{@date.month}月#{@date.day}日の食費" %></h3>
+    <h3 class="costnum"><%= "#{@datecost}円" %><h3><br>
+  <% end %>
+  
+  <br>
+  
+  <%= date_select :search_date, :monthcost, discard_day: true, use_month_numbers: true, include_blank: true %>
+  <%= "月の食費" %><br>
+  <% if @monthcost.nil? %>
+    <h3>0年0月の食費</h3>
+    <h3 class="costnum"><%= "0円" %></h3><br>
+  <% else %>
+    <h3><%= "#{@month.year}年#{@month.month}月の食費" %></h3>
+    <h3 class="costnum"><%= "#{@monthcost}円" %></h3><br>
+  <% end %>
+  
+  <br>
+  
+  <%= date_select :search_date, :yearcost, discard_month: true, discard_day: true, use_month_numbers: true, include_blank: true %>
+  <%= "年の食費" %><br>
+  <% if @yearcost.nil? %>
+    <h3>0年の食費</h3>
+    <h3 class="costnum"><%= "0円" %></h3><br>
+  <% else %>
+    <h3><%= "#{@year.year}年の食費" %></h3>
+    <h3 class="costnum"><%= "#{@yearcost}円" %></h3><br>
+  <% end %>
+  
+  <br>
+  
+  <p><%= submit_tag "検索" %>
+  </div>
+<% end %>
