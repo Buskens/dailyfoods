@@ -22,7 +22,7 @@ class RecipesController < ApplicationController
         recipes = Recipe.new(read(result))
         @recipes << recipes
       end
-      sleep(0.88)
+      sleep(2.00)
     end
   end
 end
