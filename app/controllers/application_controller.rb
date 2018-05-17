@@ -6,11 +6,11 @@ class ApplicationController < ActionController::Base
   
   
   def read(result)
-    code = result[:recipeId]
-    cost = result[:recipeCost]
-    name = result[:recipeTitle]
-    url = result[:recipeUrl]
-    image_url = result[:mediumImageUrl]
+    code = result['recipeId']
+    cost = result['recipeCost']
+    name = result['recipeTitle']
+    url = result['recipeUrl']
+    image_url = result['mediumImageUrl']
 
 
     return {
