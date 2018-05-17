@@ -6,17 +6,6 @@
     <div class="cover-inner">
       <div class="cover-contents">
         <% unless logged_in? %>
-        <div class="container">
-          <div class="row">
-            <% @images.each do |imageUrl| %>
-            <div class="col-md-4">
-              <div class="thumbnail">
-                <%= image_tag(imageUrl) %>
-              </div>
-            </div>
-            <% end %>
-            </div>
-          </div>
           <h1>日々の食事をより良く、簡単に</h1>
           <%= link_to '献立を作る', signup_path, class: 'btn btn-success btn-lg' %>
         <% else %>

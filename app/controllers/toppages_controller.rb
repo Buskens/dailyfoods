@@ -4,6 +4,7 @@ class ToppagesController < ApplicationController
   require 'uri'
   
   def index
+=begin
     unless logged_in?
       @images = []
       application_id = ENV['RAKUTEN_APPLICATION_ID']
@@ -25,6 +26,7 @@ class ToppagesController < ApplicationController
         sleep(0.88)
       end
     end
+=end
   end
   
   
