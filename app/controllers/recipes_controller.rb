@@ -1,5 +1,6 @@
 class RecipesController < ApplicationController
   require 'open-uri'
+  require 'open_uri_redirections'
   require 'uri'
   require 'json'
   
