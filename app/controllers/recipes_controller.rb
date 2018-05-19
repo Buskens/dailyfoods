@@ -1,6 +1,5 @@
 class RecipesController < ApplicationController
   require 'open-uri'
-  require 'open_uri_redirections'
   require 'uri'
   require 'json'
   require 'net/http'
@@ -25,14 +24,12 @@ class RecipesController < ApplicationController
       req = Net::HTTP::Get.new(uri.request_uri)
       res = http.request(req)
       mid_results = JSON.parse(res.body)
-      
-      #mid_results = JSON.parse(open(request_url).read,{symbolize_names: true})
       results = mid_results['result']
       results.each do |result|
         recipes = Recipe.new(read(result))
         @recipes << recipes
       end
-      sleep(2.0)
+      sleep(0.88)
     end
   end
 end

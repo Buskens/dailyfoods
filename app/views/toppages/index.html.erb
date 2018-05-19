@@ -6,6 +6,17 @@
     <div class="cover-inner">
       <div class="cover-contents">
         <% unless logged_in? %>
+        <div class="container">
+          <div class="row">
+            <% @images.each do |imageUrl| %>
+            <div class="col-md-4">
+              <div class="thumbnail">
+                <%= image_tag(imageUrl) %>
+              </div>
+            </div>
+            <% end %>
+            </div>
+          </div>
           <h1>日々の食事をより良く、簡単に</h1>
           <%= link_to '献立を作る', signup_path, class: 'btn btn-success btn-lg' %>
         <% else %>
@@ -36,19 +47,96 @@
           <%= link_to '主菜を決める', new_recipe_path(menu_category: '主菜', category_id: ['10','11','32','33'], type: "morning", cooked_day: params[:cooked_day], food_type: "syusai")%>
           <%= link_to '副菜を決める', new_recipe_path(menu_category: '副菜', category_id: ['12','18','17'], type: "morning", cooked_day: params[:cooked_day], food_type: "fukusai") %>
           <%= link_to '主食を決める', new_recipe_path(menu_category: '主食', category_id: ['14','15','16'], type: "morning", cooked_day: params[:cooked_day], food_type: "syusyoku") %>
+           <div class="minithumbnail-container">
+           <div class="minithumbnail">
+               <% if menuExist?(datedeterm(params[:cooked_day]), "morning", "syusai") %>
+                 <img src="/images/syusai.jpg">
+               <% else %>
+                 <% url, image_url = miniThumbNail(datedeterm(params[:cooked_day]), "morning", "syusai")%>
+                 <%= link_to(image_tag(image_url), url) %>
+               <% end %> 
+           </div>
+           <div class="minithumbnail">
+               <% if menuExist?(datedeterm(params[:cooked_day]), params[:type], "fukusai") %>
+                 <img src="/images/hukusai.jpg">
+               <% else %>
+                 <% url, image_url = miniThumbNail(datedeterm(params[:cooked_day]), "morning", "fukusai")%>
+                 <%= link_to(image_tag(image_url), url) %>
+               <% end %>
+            </div>
+            <div class="minithumbnail">
+               <% if menuExist?(datedeterm(params[:cooked_day]), "morning", "syusyoku") %>
+                 <img src="/images/syusyoku.jpg">
+               <% else %>
+                 <% url, image_url = miniThumbNail(datedeterm(params[:cooked_day]), "morning", "syusyoku")%>
+                 <%= link_to(image_tag(image_url), url) %>
+               <% end %>
+            </div>
+           </div>
            <div class="costtable">
            <h3 class="costnum">朝ごはんの食費：<%= costSet("morning", params[:cooked_day]) %>円</h3>
            </div>
            <%= link_to '主菜を決める', new_recipe_path(menu_category: '主菜', category_id: ['10','11','32','33'], type: "lunch", cooked_day: params[:cooked_day], food_type: "syusai")%>
           <%= link_to '副菜を決める', new_recipe_path(menu_category: '副菜', category_id: ['12','18','17'], type: "lunch", cooked_day: params[:cooked_day], food_type: "fukusai") %>
           <%= link_to '主食を決める', new_recipe_path(menu_category: '主食', category_id: ['14','15','16'], type: "lunch", cooked_day: params[:cooked_day], food_type: "syusyoku") %>
+           <div class="minithumbnail-container">
+           <div class="minithumbnail">
+               <% if menuExist?(datedeterm(params[:cooked_day]), "lunch", "syusai") %>
+                 <img src="/images/syusai.jpg">
+               <% else %>
+                 <% url, image_url = miniThumbNail(datedeterm(params[:cooked_day]), "lunch", "syusai")%>
+                 <%= link_to(image_tag(image_url), url) %>
+               <% end %> 
+           </div>
+           <div class="minithumbnail">
+               <% if menuExist?(datedeterm(params[:cooked_day]), "lunch", "fukusai") %>
+                 <img src="/images/hukusai.jpg">
+               <% else %>
+                 <% url, image_url = miniThumbNail(datedeterm(params[:cooked_day]), "lunch", "fukusai")%>
+                 <%= link_to(image_tag(image_url), url) %>
+               <% end %> 
+            </div>
+            <div class="minithumbnail">
+               <% if menuExist?(datedeterm(params[:cooked_day]), "lunch", "syusyoku") %>
+                 <img src="/images/syusyoku.jpg">
+               <% else %>
+                 <% url, image_url = miniThumbNail(datedeterm(params[:cooked_day]), "lunch", "syusyoku")%>
+                 <%= link_to(image_tag(image_url), url) %>
+               <% end %> 
+            </div>
+           </div>
            <div class="costtable">
            <h3 class="costnum">昼ごはんの食費：<%= costSet("lunch", params[:cooked_day]) %>円</h3>
            </div>
            <%= link_to '主菜を決める', new_recipe_path(menu_category: '主菜', category_id: ['10','11','32','33'], type: "dinner", cooked_day: params[:cooked_day], food_type: "syusai")%>
           <%= link_to '副菜を決める', new_recipe_path(menu_category: '副菜', category_id: ['12','18','17'], type: "dinner", cooked_day: params[:cooked_day], food_type: "fukusai") %>
           <%= link_to '主食を決める', new_recipe_path(menu_category: '主食', category_id: ['14','15','16'], type: "dinner", cooked_day: params[:cooked_day], food_type: "syusyoku") %>
-           
+            <div class="minithumbnail-container">
+           <div class="minithumbnail">
+               <% if menuExist?(datedeterm(params[:cooked_day]), "lunch", "syusai") %>
+                 <img src="/images/syusai.jpg">
+               <% else %>
+                 <% url, image_url = miniThumbNail(datedeterm(params[:cooked_day]), "lunch", "syusai")%>
+                 <%= link_to(image_tag(image_url), url) %>
+               <% end %> 
+           </div>
+           <div class="minithumbnail">
+               <% if menuExist?(datedeterm(params[:cooked_day]), "lunch", "fukusai") %>
+                 <img src="/images/hukusai.jpg">
+               <% else %>
+                 <% url, image_url = miniThumbNail(datedeterm(params[:cooked_day]), "lunch", "fukusai")%>
+                 <%= link_to(image_tag(image_url), url) %>
+               <% end %> 
+            </div>
+            <div class="minithumbnail">
+               <% if menuExist?(datedeterm(params[:cooked_day]), "lunch", "syusyoku") %>
+                 <img src="/images/syusyoku.jpg">
+               <% else %>
+                 <% url, image_url = miniThumbNail(datedeterm(params[:cooked_day]), "lunch", "syusyoku")%>
+                 <%= link_to(image_tag(image_url), url) %>
+               <% end %> 
+            </div>
+           </div>
            <div class="costtable">
            <h3 class="costnum">夜ごはんの食費：<%= costSet("dinner", params[:cooked_day]) %>円</h3>
            </div>
