@@ -1,5 +1,4 @@
 class RecipesController < ApplicationController
-  require 'open-uri'
   require 'uri'
   require 'json'
   require 'net/http'
